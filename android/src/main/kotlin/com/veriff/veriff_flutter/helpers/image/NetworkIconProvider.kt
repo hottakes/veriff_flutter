@@ -41,7 +41,7 @@ data class NetworkIconProvider(private val url: String?) : Branding.DrawableProv
                 if (bitmap == null) {
                     atomicResult.set(Result(IOException("Loaded bitmap was null")))
                 } else {
-                    atomicResult.set(Result(bitmap.copy(bitmap.config, false)))
+                    atomicResult.set(Result(bitmap.copy(bitmap.config ?: Bitmap.Config.ARGB_8888, false)))
                 }
                 imageLoadLatch.countDown()
             }
